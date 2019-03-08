@@ -1,12 +1,13 @@
 from functools import partial
-from math import acos, cos
+from math import acos, cos, asin, sin, atan, tan
 
 import numpy as np
 import pylab  # plotting routines
 import scipy.signal  # signal processing toolbox
 from matplotlib.pyplot import grid, plot, show, xlabel, xlim, ylabel
 from numpy import (angle, convolve, flipud, linspace, loadtxt, ndarray, ones,
-                   roots, shape, sqrt, squeeze, tan, where, zeros)
+                   roots, shape, sqrt, squeeze, tan, where, zeros, deg2rad,
+                   rad2deg)
 from scipy import array, imag, poly1d, real, row_stack, zeros_like
 
 from control.exception import ControlMIMONotImplemented
@@ -298,6 +299,74 @@ def rlocfind(sys, desired_zeta, kvectin=None):
     K = squeeze(Gdict["k"].real)
     POLES = pole(feedback(K * sys, 1))
     return K, POLES
+
+def cosd(thetad):
+    '''
+    Compute cosine in degrees
+    Parameters:
+    :param thetad: [float] theta in degrees
+    Returns:
+    :return: x: [float] cosine in degrees
+    '''
+    x = cos(deg2rad(thetad))
+    return x
+
+def sind(thetad):
+    '''
+    Compute sine of an angle in degrees
+    Parameters:
+    :param thetad: [float] theta in degrees
+    Returns:
+    :return: x: [float] sine result
+    '''
+    x = sin(deg2rad(thetad))
+    return x
+
+def tand(thetad):
+    '''
+    Compute tangent of an angle in degrees
+    Parameters:
+    :param thetad: [float] theta in degrees
+    Returns:
+    :return: x: [float] tangent result
+    '''
+    x = tan(deg2rad(thetad))
+    return x
+
+def acosd(x):
+    '''
+    Compute inverse cosine in degrees
+    Parameters:
+    :param x: [float] input value
+    Returns:
+    :return: thetad: [float] inverse cosine in degrees
+    '''
+    thetad = rad2deg(acos(x))
+    return thetad
+
+def asind(x):
+    '''
+    Compute inverse sine in degrees
+    Parameters:
+    :param x: [float] input value
+    Returns:
+    :return: thetad: [float] inverse sine in degrees
+    '''
+    thetad = rad2deg(asin(x))
+    return thetad
+
+def atand(x):
+    '''
+    Compute inverse tangent in degrees
+    Parameters:
+    :param x: [float] input value
+    Returns:
+    :return: thetad: [float] inverse tangent in degrees
+    '''
+    thetad = rad2deg(atan(x))
+    return thetad
+
+
 
 # rlocus.py - code for computing a root locus plot
 # Code contributed by Ryan Krauss, 2010

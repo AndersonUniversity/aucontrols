@@ -4,6 +4,8 @@ Date: 3/6/2019
 Version 0.1.0
 '''
 
-__all__ = ['stepinfo', 'zetaline', 'getstepfromtxt', 'pidplot', 'pidtune', 'rlocfind2', 'rlocfind']
+__all__ = ['stepinfo', 'zetaline', 'getstepfromtxt', 'pidplot',
+           'pidtune', 'rlocfind','cosd','acosd','sind','asind',
+           'tand','atand']
 
 from .impl import *

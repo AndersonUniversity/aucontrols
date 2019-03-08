@@ -14,9 +14,6 @@ from control.exception import ControlMIMONotImplemented
 from control.matlab import dcgain, feedback, pole, rlocus, step, tf
 from control.xferfcn import _convertToTransferFunction
 
-from .rlocus import * # can't use this because i made changes to the original version of this file
-
-
 def stepinfo(y_input, t_input, round_in=4):
     '''
     Get the second order time response characteristics

@@ -11,4 +11,4 @@ pip install git+http://github.com/AndersonUniversity/aucontrols
 ```
 
 Usage from the python prompt
-`from aucontrol import *`
+`from aucontrols import *`

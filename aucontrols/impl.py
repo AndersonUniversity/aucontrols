@@ -12,13 +12,13 @@ from scipy import array, imag, poly1d, real, row_stack, zeros_like
 
 from control.exception import ControlMIMONotImplemented
 from control.matlab import dcgain, feedback, pole, rlocus, step, tf
-from control.xferfcn import _convertToTransferFunction
+#from control.xferfcn import _convertToTransferFunction  #BUG Squashed (short term solution)
 
 def stepinfo(y_input, t_input, round_in=4):
     '''
     Get the second order time response characteristics
     Given the time domain response of a system
-    r, ts, Mp, tp, yss = stepinfo(y_input,t_input,round_in)
+    tr, ts, Mp, tp, yss = stepinfo(y_input,t_input,round_in)
     Parameters:
     :param y_input: [array-like] response of a step function
     :param t_input:  [array-like] time array from a step function
@@ -640,7 +640,7 @@ def _systopoly1d(sys):
 
     else:
         # Convert to a transfer function, if needed
-        sys = _convertToTransferFunction(sys)
+        # sys = _convertToTransferFunction(sys) #BUG Squashed (short term solution)
 
         # Make sure we have a SISO system
         if (sys.inputs > 1 or sys.outputs > 1):
